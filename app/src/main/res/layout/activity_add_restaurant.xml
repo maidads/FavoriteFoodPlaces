@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddRestaurantActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fadingEdge="none"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/_60_f_597490918_dugdbsuqx6ysrmcayizj6pcr37cxk3rv" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="22dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="Add favorite restaurant"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextRestaurantName"
+        android:layout_width="236dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="100dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/editTextLocation"
+        android:layout_width="236dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Adress"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRestaurantName" />
+
+    <EditText
+        android:id="@+id/editTextCuisine"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="236dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="100dp"
+        android:ems="10"
+        android:hint="Type of cuisine"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextLocation" />
+
+    <EditText
+        android:id="@+id/editTextRating"
+        android:layout_width="236dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="101dp"
+        android:ems="10"
+        android:hint="Rating (0.0 - 5.0)"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCuisine" />
+
+    <Button
+        android:id="@+id/add_restaurant_button"
+        android:layout_width="112dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="Add"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRating" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="88dp"
+        android:layout_height="62dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="Back"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.808"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_restaurant_button" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="230dp"
+        android:layout_height="219dp"
+        android:layout_marginStart="-10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/hungry" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

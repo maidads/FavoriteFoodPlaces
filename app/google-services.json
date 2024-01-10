@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1005190636638",
+    "project_id": "favoritefoodplaces",
+    "storage_bucket": "favoritefoodplaces.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005190636638:android:db27565b17ce937c39c0cf",
+        "android_client_info": {
+          "package_name": "com.example.favoritefoodplaces"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA9_wEOzw2sTM25DD251UDuxHfT3plnwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
