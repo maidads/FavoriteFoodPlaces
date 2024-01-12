@@ -33,9 +33,9 @@ class RestaurantAdapter(private val restaurantList: MutableList<Restaurant>) :
         override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
             val restaurant = restaurantList[position]
 
-            holder.nameView.text = restaurant.name
-            holder.locationView.text = restaurant.address
-            holder.cuisineView.text = restaurant.typeOfFood
+            holder.nameView.text = restaurant.name.orEmpty()
+            holder.locationView.text = restaurant.address.orEmpty()
+            holder.cuisineView.text = restaurant.typeOfFood.orEmpty()
             holder.ratingView.text = restaurant.rating.toString()
         }
 
@@ -43,6 +43,13 @@ class RestaurantAdapter(private val restaurantList: MutableList<Restaurant>) :
             return restaurantList.size
         }
 
+        // Använd notifyItemInserted om du känner till indexet för det nya objektet
+        fun addRestaurant(restaurant: Restaurant) {
+            restaurantList.add(restaurant)
+            notifyItemInserted(restaurantList.size - 1)
+        }
+
+        // Om du vill rensa alla objekt och lägga till nya
         fun updateData(newRestaurants: List<Restaurant>) {
             restaurantList.clear()
             restaurantList.addAll(newRestaurants)

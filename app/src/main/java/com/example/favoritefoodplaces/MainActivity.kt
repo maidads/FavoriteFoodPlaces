@@ -56,47 +56,8 @@ class MainActivity : AppCompatActivity() {
             val addRestaurantIntent = Intent(this, AddRestaurantActivity::class.java)
             addRestaurantLauncher.launch(addRestaurantIntent)
         }
+        fetchRestaurantsFromFirestore()
 
-
-
- /*
-
-        val addButton = findViewById<Button>(R.id.add_button)
-        addButton.setOnClickListener {
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivityForResult(intent, ADD_RESTAURANT_REQUEST_CODE)
-        }
-
-
-        val user = auth.currentUser
-        if (user != null) {
-            db.collection("users").document(user.uid)
-                .collection("favorite_restaurants").get()
-                .addOnSuccessListener { documents ->
-                    val restaurants = documents.map { it.toObject(Restaurant::class.java) }
-                    adapter.updateRestaurants(restaurants)
-                }
-        }
-
-
-
-
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        Log.d("MainActivity!!!!", "onActivityResult called")
-        if (requestCode == ADD_RESTAURANT_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val newRestaurant = data?.getParcelableExtra<Restaurant>("new_restaurant")
-            newRestaurant?.let {
-                restaurants.add(it)
-                adapter.notifyItemInserted(restaurants.size - 1)
-                Log.d("!!!!", "onActivityResult called")
-
-            }
-        }
-
-  */
     }
 
     fun fetchRestaurantsFromFirestore() {
@@ -106,20 +67,25 @@ class MainActivity : AppCompatActivity() {
                 .collection("favorite_restaurants")
                 .addSnapshotListener { value, error ->
                     if (error != null) {
-                        // Handle error
+                        // Hantera fel här
+                        Log.e("Firestore", "Error fetching restaurants", error)
                         return@addSnapshotListener
                     }
 
-                    val restaurants = ArrayList<Restaurant>()
+                    if (value != null) {
+                        val fetchedRestaurants = ArrayList<Restaurant>()
 
-                    for (document in value!!) {
-                        val restaurant = document.toObject(Restaurant::class.java)
-                        restaurants.add(restaurant)
+                        for (document in value) {
+                            val restaurant = document.toObject(Restaurant::class.java)
+                            fetchedRestaurants.add(restaurant)
+                        }
+
+                        // Uppdatera adaptern med den nya listan av restauranger
+                        for (newRestaurant in fetchedRestaurants) {
+                            adapter.addRestaurant(newRestaurant)
+                        }
                     }
-
-                    adapter.updateData(restaurants) // Uppdatera adaptern med den nya listan av restauranger
                 }
         }
     }
-
 }

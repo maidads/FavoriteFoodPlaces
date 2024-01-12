@@ -2,7 +2,10 @@ package com.example.favoritefoodplaces
 
 import android.os.Parcel
 import android.os.Parcelable
+import kotlinx.parcelize.Parceler
 
+
+@kotlinx.parcelize.Parcelize
 data class Restaurant(
     val name: String?,
     val address: String?,
@@ -11,61 +14,7 @@ data class Restaurant(
     val imageResId: Int? = null,
     val info: String? = null
 ) : Parcelable {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    constructor() : this("", "", "", 0.0, 0, "")
 
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -74,32 +23,23 @@ data class Restaurant(
         parcel.readDouble(),
         parcel.readInt(),
         parcel.readString()
+    )
 
-        ) {
-    }
+    companion object : Parceler<Restaurant> {
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(name)
-        parcel.writeString(address)
-        parcel.writeString(typeOfFood)
-        parcel.writeDouble(rating)
-        if (imageResId != null) {
-            parcel.writeInt(imageResId)
+        override fun Restaurant.write(parcel: Parcel, flags: Int) {
+            parcel.writeString(name)
+            parcel.writeString(address)
+            parcel.writeString(typeOfFood)
+            parcel.writeDouble(rating)
+            if (imageResId != null) {
+                parcel.writeInt(imageResId)
+            }
+            parcel.writeString(info)
         }
-        parcel.writeString(info)
-    }
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Restaurant> {
-        override fun createFromParcel(parcel: Parcel): Restaurant {
+        override fun create(parcel: Parcel): Restaurant {
             return Restaurant(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Restaurant?> {
-            return arrayOfNulls(size)
         }
     }
 }
