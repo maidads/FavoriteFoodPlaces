@@ -42,4 +42,11 @@ class RestaurantAdapter(private val restaurantList: MutableList<Restaurant>) :
         override fun getItemCount(): Int {
             return restaurantList.size
         }
+
+        fun updateData(newRestaurants: List<Restaurant>) {
+            restaurantList.clear()
+            restaurantList.addAll(newRestaurants)
+            notifyDataSetChanged()
+        }
+
     }

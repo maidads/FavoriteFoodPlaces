@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -30,7 +31,6 @@ class AddRestaurantActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.add_restaurant_button)
         button.setOnClickListener {
             saveItem()
-            finish()
         }
 
         val backButton = findViewById<Button>(R.id.button2)
@@ -62,12 +62,21 @@ class AddRestaurantActivity : AppCompatActivity() {
         val user = auth.currentUser
         if (user != null) {
             db.collection("users").document(user.uid)
-                .collection("favorite_restaurants").add(restaurant)
+                .collection("favorite_restaurants")
+                .add(restaurant)
+                .addOnSuccessListener {
+                    // Handle successful addition of the restaurant
+                    val resultIntent = Intent()
+                    resultIntent.putExtra("new_restaurant", restaurant)
+                    setResult(Activity.RESULT_OK, resultIntent)
+                    finish()
+                }
+                .addOnFailureListener { e ->
+                    // Handle failure to add the restaurant
+                    Toast.makeText(this, "Error adding restaurant: $e", Toast.LENGTH_SHORT).show()
+                }
         }
 
-        val resultIntent = Intent()
-        resultIntent.putExtra("new_restaurant", restaurant)
-        setResult(Activity.RESULT_OK, resultIntent)
     }
 }
 
