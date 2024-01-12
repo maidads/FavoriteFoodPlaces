@@ -7,10 +7,10 @@ import kotlinx.parcelize.Parceler
 
 @kotlinx.parcelize.Parcelize
 data class Restaurant(
-    val name: String?,
-    val address: String?,
-    val typeOfFood: String?,
-    val rating: Double,
+    val name: String? = null,
+    val address: String? = null,
+    val typeOfFood: String? = null,
+    val rating: Double = 0.0,
     val imageResId: Int? = null,
     val info: String? = null
 ) : Parcelable {

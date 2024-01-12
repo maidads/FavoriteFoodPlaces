@@ -1,13 +1,12 @@
 package com.example.favoritefoodplaces
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RestaurantAdapter(private val restaurantList: MutableList<Restaurant>) :
+class RestaurantAdapter(private val restaurantList: MutableList<Restaurant>, private val clickListener: (Restaurant) -> Unit) :
     RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
 
         inner class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -15,14 +14,16 @@ class RestaurantAdapter(private val restaurantList: MutableList<Restaurant>) :
             val locationView: TextView = itemView.findViewById(R.id.textView7)
             val cuisineView: TextView = itemView.findViewById(R.id.textView8)
             val ratingView: TextView = itemView.findViewById(R.id.textView9)
+/*
             init {
                 itemView.setOnClickListener {
                     val clickedRestaurant = restaurantList[adapterPosition]
                     val intent = Intent(itemView.context, RestaurantDetailActivity::class.java)
                     intent.putExtra("restaurant", clickedRestaurant)
                     itemView.context.startActivity(intent)
-                }
+                   }
             }
+ */
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
@@ -37,23 +38,21 @@ class RestaurantAdapter(private val restaurantList: MutableList<Restaurant>) :
             holder.locationView.text = restaurant.address.orEmpty()
             holder.cuisineView.text = restaurant.typeOfFood.orEmpty()
             holder.ratingView.text = restaurant.rating.toString()
+
+            holder.itemView.setOnClickListener {
+                clickListener(restaurant)
+            }
         }
 
         override fun getItemCount(): Int {
             return restaurantList.size
         }
 
-        // Använd notifyItemInserted om du känner till indexet för det nya objektet
         fun addRestaurant(restaurant: Restaurant) {
-            restaurantList.add(restaurant)
-            notifyItemInserted(restaurantList.size - 1)
+            val existingRestaurant = restaurantList.find { it.name == restaurant.name }
+            if (existingRestaurant == null) {
+                restaurantList.add(restaurant)
+                notifyItemInserted(restaurantList.size - 1)
+            }
         }
-
-        // Om du vill rensa alla objekt och lägga till nya
-        fun updateData(newRestaurants: List<Restaurant>) {
-            restaurantList.clear()
-            restaurantList.addAll(newRestaurants)
-            notifyDataSetChanged()
-        }
-
     }

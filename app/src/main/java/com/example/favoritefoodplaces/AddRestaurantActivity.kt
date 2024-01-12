@@ -6,20 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
-import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class AddRestaurantActivity : AppCompatActivity() {
 
-    lateinit var db : FirebaseFirestore
-    lateinit var auth : FirebaseAuth
+    private lateinit var db : FirebaseFirestore
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,68 +61,11 @@ class AddRestaurantActivity : AppCompatActivity() {
                 .collection("favorite_restaurants")
                 .add(restaurant)
                 .addOnSuccessListener {
-                    // Handle successful addition of the restaurant
                     val resultIntent = Intent()
                     resultIntent.putExtra("new_restaurant", restaurant)
                     setResult(Activity.RESULT_OK, resultIntent)
                     finish()
                 }
-                .addOnFailureListener { e ->
-                    // Handle failure to add the restaurant
-                    Toast.makeText(this, "Error adding restaurant: $e", Toast.LENGTH_SHORT).show()
-                }
-        }
-
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-data class Restaurants(
-    @DocumentId var documentId : String? = null,
-    var name : String? = null,
-    var address: String? = null,
-    var typeOfFood: String? = null,
-    var rating: Double? = null
-)
-
- */
-
-/*
-        addRestaurantButton.setOnClickListener {
-            val name = restaurantName.text.toString()
-            val address = restaurantAddress.text.toString()
-            val cuisine = restaurantCuisine.text.toString()
-
-            val ratingString = restaurantRating.text.toString()
-            val rating = if (ratingString.isNotEmpty()) {
-                ratingString.toDoubleOrNull() ?: 0.0
-            } else {
-                0.0
-            }
-
-            val newRestaurant = Restaurant(name, address, cuisine, rating)
-
-            val resultIntent = Intent()
-            resultIntent.putExtra("new_restaurant", newRestaurant)
-            setResult(Activity.RESULT_OK, resultIntent)
-            finish()
         }
     }
 }
-*/

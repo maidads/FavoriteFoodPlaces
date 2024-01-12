@@ -3,12 +3,9 @@ package com.example.favoritefoodplaces
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
 
 class RestaurantDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +28,6 @@ class RestaurantDetailActivity : AppCompatActivity() {
         restaurant?.imageResId?.let {
             restaurantImageView.setImageResource(it)
         }
-
 
         val backButton = findViewById<Button>(R.id.button)
         backButton.setOnClickListener {
