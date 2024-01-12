@@ -5,4 +5,5 @@
 <img width="280" alt="Skärmavbild 2024-01-12 kl  18 27 18" src="https://github.com/maidads/FavoriteFoodPlaces/assets/98819095/4cd5b2d4-282d-4a15-9088-b4c65d012ff4">
 <img width="280" alt="Skärmavbild 2024-01-12 kl  18 28 47" src="https://github.com/maidads/FavoriteFoodPlaces/assets/98819095/3d4170b1-9a12-481b-809e-7ed8bc797266">
 <img width="280" alt="Skärmavbild 2024-01-12 kl  18 29 26" src="https://github.com/maidads/FavoriteFoodPlaces/assets/98819095/48f999d0-1f9f-4563-b8f4-46facf9e5040">
+![png-clipart-arrow-computer-icons-down-arrow-hand-window-thumbnail](https://github.com/maidads/FavoriteFoodPlaces/assets/98819095/9563e7fe-0f60-4a40-b4d0-9a3a414b7cec)
 <img width="880" alt="Skärmavbild 2024-01-12 kl  18 40 47" src="https://github.com/maidads/FavoriteFoodPlaces/assets/98819095/1cf8ee46-59db-46af-b824-be6227f2c245">
